@@ -1,8 +1,9 @@
-import { Container, MainContainer, Button, UserCardContainer, P, ImageContainer, BoyImg, LineImg, LogoImg } from "./UserCard.styled";
+import { Container, ImgBoyTest, MainContainer, Button, UserCardContainer, P, ImageContainer, LineImg, LogoImg, Krygok, StatsContainer } from "./UserCard.styled";
 import logo from '../../images/Vector.svg'
 import downLogo from '../../images/DownLogo.svg'
-import boy from '../../images/Boy.svg'
+import boy from '../../images/Hansel.svg'
 import line from '../../images/Line.svg'
+import krygok from '../../images/krygol.svg'
 import { IData } from "../../types";
 import { useEffect, useState } from "react";
 import axios from 'axios'
@@ -71,12 +72,15 @@ const UserCard = () => {
                 <LogoImg src={logo} alt="logo" />
                 <img src={downLogo} alt="downlogo" />
                 <ImageContainer>
-                    <BoyImg src={boy} alt="boy" />
+                    <ImgBoyTest src={boy} alt="boy" width='62' />
+                    <Krygok src={krygok} alt="boy" />
                     <LineImg src={line} alt="line" />
                 </ImageContainer>
-                <P>{item.tweets} Tweets</P>
-                <P>{folowers(item.followers)} followers</P>
-                <Button primary={item.followers === 150000 ? true : false} onClick={() => onClick(item.id, item.followers === 150000 ? 'inc' : 'dec')} type="button">{item.followers === 150000 ? 'Follow' : 'following'}</Button>
+                <StatsContainer>
+                    <P>{item.tweets} Tweets</P>
+                    <P>{folowers(item.followers)} followers</P>
+                    <Button primary={item.followers === 150000 ? true : false} onClick={() => onClick(item.id, item.followers === 150000 ? 'inc' : 'dec')} type="button">{item.followers === 150000 ? 'Follow' : 'following'}</Button>
+                </StatsContainer>
             </UserCardContainer>
         </Container>) : null}
         {currentPage < totalPages && (

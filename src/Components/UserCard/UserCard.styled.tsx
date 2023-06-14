@@ -12,6 +12,23 @@ background: linear-gradient(114.99deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 7
 box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
 border-radius: 20px;
 
+
+`;
+export const ImgBoyTest = styled.img`
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  border-radius: 25%;
+  background: linear-gradient(114.99deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%);
+`;
+export const Krygok = styled.img`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
 `;
 export const LogoImg = styled.img`
 display: flex;
@@ -21,19 +38,19 @@ padding-top:20px;
 border-radius: 85.9232px;
 `;
 export const ImageContainer = styled.div`
-margin-top: -20px;
-display: flex;
-justify-content: center;
-align-items: center;
+  position: relative;
+margin-top:18px;
 `;
-export const BoyImg = styled.img`
-position: relative;
-left:150px;
-z-index: 1;
+export const StatsContainer = styled.div`
+margin-top:70px;
 `;
 export const LineImg = styled.img`
-margin-left: -90px;
-`
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+`;
 
 export const P = styled.p`
 margin-left: auto;
