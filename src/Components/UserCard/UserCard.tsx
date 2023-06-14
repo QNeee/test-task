@@ -35,12 +35,12 @@ const UserCard = () => {
     const [w8, setW8] = useState(false);
     const [data, setData] = useState<IData[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(0); // Додано стан для загальної кількості сторінок
+    const [totalPages, setTotalPages] = useState(0);
     useEffect(() => {
         getData(currentPage).then((response) => {
             const responseData = response?.data || [];
             if (currentPage !== 1) {
-                setData(prev => [...prev, ...responseData]); // Оновлено логіку оновлення стану data
+                setData(prev => [...prev, ...responseData]);
             } else {
                 setData(responseData);
             }
