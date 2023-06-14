@@ -8,6 +8,7 @@ import { IData } from "../../types";
 import { useEffect, useState } from "react";
 import axios from 'axios'
 import numeral from 'numeral';
+import { useNavigate } from "react-router-dom";
 const getData = async (page: number) => {
     const url = new URL('https://6489ef245fa58521cab07cfe.mockapi.io/api/task//users');
     url.searchParams.append('page', page.toString());
@@ -32,7 +33,8 @@ const folowers = (num: number): string => {
     const formattedNumber = numeral(num).format('0,0');
     return "" + formattedNumber;
 }
-const UserCard = () => {
+const UserCard: React.FC = () => {
+    const navigate = useNavigate();
     const [w8, setW8] = useState(false);
     const [data, setData] = useState<IData[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -66,29 +68,34 @@ const UserCard = () => {
     const onLoadMore = () => {
         setCurrentPage((prevPage) => prevPage + 1);
     }
-    return <MainContainer>
-        {data.length > 0 ? data.map(item => <Container key={item.id}>
-            <UserCardContainer>
-                <LogoImg src={logo} alt="logo" />
-                <img src={downLogo} alt="downlogo" />
-                <ImageContainer>
-                    <ImgBoyTest src={boy} alt="boy" width='62' />
-                    <Krygok src={krygok} alt="boy" />
-                    <LineImg src={line} alt="line" />
-                </ImageContainer>
-                <StatsContainer>
-                    <P>{item.tweets} Tweets</P>
-                    <P>{folowers(item.followers)} followers</P>
-                    <Button primary={item.followers === 150000 ? true : false} onClick={() => onClick(item.id, item.followers === 150000 ? 'inc' : 'dec')} type="button">{item.followers === 150000 ? 'Follow' : 'following'}</Button>
-                </StatsContainer>
-            </UserCardContainer>
-        </Container>) : null}
-        {currentPage < totalPages && (
-            <Button primary={false} onClick={onLoadMore}>
-                Load More
-            </Button>
-        )}
-    </MainContainer>
+
+    return <>
+        <Button primary={false} onClick={() => navigate('/')}>
+            back
+        </Button>
+        <MainContainer>
+            {data.length > 0 ? data.map(item => <Container key={item.id}>
+                <UserCardContainer>
+                    <LogoImg src={logo} alt="logo" />
+                    <img src={downLogo} alt="downlogo" />
+                    <ImageContainer>
+                        <ImgBoyTest src={boy} alt="boy" width='62' />
+                        <Krygok src={krygok} alt="boy" />
+                        <LineImg src={line} alt="line" />
+                    </ImageContainer>
+                    <StatsContainer>
+                        <P>{item.tweets} Tweets</P>
+                        <P>{folowers(item.followers)} followers</P>
+                        <Button primary={item.followers === 150000 ? true : false} onClick={() => onClick(item.id, item.followers === 150000 ? 'inc' : 'dec')} type="button">{item.followers === 150000 ? 'Follow' : 'following'}</Button>
+                    </StatsContainer>
+                </UserCardContainer>
+            </Container>) : null}
+            {currentPage < totalPages && (
+                <Button primary={false} onClick={onLoadMore}>
+                    Load More
+                </Button>
+            )}
+        </MainContainer></>
 }
 
 export default UserCard;

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import backgroundImage from '../../images/helips.svg'
 export const Container = styled.div`
 margin-top:168px;
 display: flex;
@@ -21,8 +22,9 @@ export const ImgBoyTest = styled.img`
   transform: translate(-50%, -50%);
   z-index: 2;
   border-radius: 25%;
-  background: linear-gradient(114.99deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%);
-`;
+ background-image: url(${backgroundImage});
+ background-size: cover;
+ `;
 export const Krygok = styled.img`
   position: absolute;
   top: 50%;
@@ -39,7 +41,7 @@ border-radius: 85.9232px;
 `;
 export const ImageContainer = styled.div`
   position: relative;
-margin-top:18px;
+margin-top:20px;
 `;
 export const StatsContainer = styled.div`
 margin-top:70px;
@@ -57,6 +59,7 @@ margin-left: auto;
 margin-right:auto;
 min-width: 132px;
 height: 24px;
+font-family: 'Montserrat';
 font-weight: 500;
 font-size: 20px;
 line-height: 24px;
