@@ -11,7 +11,7 @@ const Home: React.FC = () => {
             <Description>
                 This is the home page of our website. Enjoy your stay!
             </Description>
-            <Button type='button' onClick={() => navigate('/main')}>Get Started</Button>
+            <Button type='button' onClick={() => navigate('main')}>Get Started</Button>
             <Button style={{ marginTop: '50px' }} type='button' onClick={() => navigate('/tweets')}>Tweets</Button>
         </Container ></>
     );
